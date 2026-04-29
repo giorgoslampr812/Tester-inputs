@@ -46,6 +46,18 @@ event_filter.py: Filters an event (example 585278) and sorts the MDT hits in tim
 
 bit_pse.py: Sorts both pseudodata and muon track hits in time and produces the final bit streams which are machine reabable. 
 
+rpc_data.py: Creates RPC bit stream for all BCIDs. Empty in all BCIDs except the one matching the event BCID. 
+
 Workflow-How to run: 
+
+Run corr_time.py first. Then select a interesting event based on what you want to test. 
+
+Use the event number on tester_tdc.py -> event_filter.py. This will isolate the event and apply the correct tester_tdcs. 
+
+Generate pseudodata bitstream with pois.py. 
+
+Copy paste the event_{i}_sorted.csv to the pseudodata.csv and then use the bit_pse.py to sort and generate machine data. Use rpc_data.py to isolate the trigger word for this event. 
+
+Everything is completed. 
 
 
