@@ -33,3 +33,19 @@ For MDT: mdt_filt_{A,C}.py OR eta_window_mdt_filt_{A,C}.py -> hit_offset_{A,C}.p
 Congraturations, now you should have the correct hits and sector logic words so you can proceed to the next level of the emulation. 
 
 Making the tester inputs
+
+The tester inputs are the 25 bits streams that contain TDCID (0-5), channel (0-23) and time (0-131072) in LSB of 0.78125 ns corresponding to 1280 MHz. 
+
+pois.py: Generates Poisson distributed pseudodata for 6 TDCIDs and 24 channels with frequency of 200 kHz, corresponding to period of 5000 ns or tdc bits of 6400 (tunable). 
+
+corr_time.py: Transforms coarse and fine time of MDT hits into the tdc bit time ranging from (0-131072). 
+
+tester_tdc.py: Isolates a unique event and checks the proximity of the mezzanine - tdc cards to the IP to assign a tester_tdc. The tester_tdc 0,1 should connect to first CSM for inner, the 2,3 should connect to second CSM for middle and 4,5 should connect to third CSM for outer. 
+
+event_filter.py: Filters an event (example 585278) and sorts the MDT hits in time. 
+
+bit_pse.py: Sorts both pseudodata and muon track hits in time and produces the final bit streams which are machine reabable. 
+
+Workflow-How to run: 
+
+
