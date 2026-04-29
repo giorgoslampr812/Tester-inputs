@@ -8,9 +8,9 @@ rpc_pt.py: Calculates pt,pt_threshold and charge for sector logic word, using a 
 
 com_bit_rpc_{A,C}.py: For every trigger word that the pT fit worked it calculates the full 192 bit stream ( 32 header ,128 word , 32 trailer). This uniquely defines an event that can be utilized for the tester. 
 
-mdt_filt_{A,C}.py: Utilizing the r,z coordinates of the RPC trigger words, selects hits from an area +-12 cms (half length of mezzanine card), isolating the MDT hits for emulation. 
+mdt_filt_{A,C}.py: Utilizing the r,z coordinates of the RPC trigger words, selects hits from an area +-12 cms (half length of mezzanine card), isolating the MDT hits for emulation. Can also apply tunable eta regions cut, eta_low - eta_high.
 
-eta_window_mdt_filt_{A,C}.py: Utilizing the eta coordinate of the RPC trigger words, selects MDT hits for a tunable Deta area close to the RPC coordinates. Slightly improved implementation over the mdt_filt as it naturally increases based on the distance to the IP. 
+eta_window_mdt_filt_{A,C}.py: Utilizing the eta coordinate of the RPC trigger words, selects MDT hits for a tunable Deta area close to the RPC coordinates. Slightly improved implementation over the mdt_filt as it naturally increases based on the distance to the IP. Can also apply tunable eta regions cut, eta_low - eta_high.
 
 hit_offset_{A,C}.py: From the skimmed MDT hits from the previous two algorithms, selects the 2 hottest mezzanines per MDT layer for the emulation. 
 
@@ -28,7 +28,7 @@ The scripts should be run with the following order.
 
 For RPC: rpc_pt.py -> com_bit_rpc_{A,C}.py. 
 
-For MDT: mdt_filt_{A,C}.py OR eta_window_mdt_filt_{A,C}.py -> hit_offset_{A,C}.py and optionally filt_hitmap_{A,C}.py for sanity checks. If it gives errors its because output directories don't exist so please make them with mkdir command. The python enviroment can be the one set up by the TV framework. 
+For MDT: mdt_filt_{A,C}.py OR eta_window_mdt_filt_{A,C}.py -> hit_offset_{A,C}.py and optionally filt_hitmap_{A,C}.py for sanity checks. If it gives errors its because output directories don't exist so please make them with mkdir command. The python virtual environment can be the one set up by the TV framework. 
 
 Congraturations, now you should have the correct hits and sector logic words so you can proceed to the next level of the emulation. 
 
