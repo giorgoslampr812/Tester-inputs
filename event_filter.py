@@ -7,7 +7,7 @@ output_file = "event_585278_sorted.csv"
 df = pd.read_csv(input_file)
 
 # Filter event
-filtered = df[df["event"] == 585278][["co_time", "rank", "channel"]].rename(
+filtered = df[df["event"] == 585278][["event","co_time", "rank", "channel"]].rename(
     columns={"rank": "tester_tdc"}
 )
 
